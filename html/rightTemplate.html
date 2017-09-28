@@ -1,0 +1,13 @@
+<div class="right">
+        <div class="lable">
+            Cost: {{$ctrl.gSvc.rightCost | currency}}
+        </div>
+      <div id="btnRght" class="button" ng-style="{'background-color': $ctrl.gSvc.rightBtnColor}" ng-click="$ctrl.autoClicker()">
+        +1 auto
+      </div>
+      <div>
+      <div id="counter" class="lable">
+        Auto clickers: {{$ctrl.gSvc.clickersNumber}}
+      </div>
+    </div>
+    </div>

@@ -1,0 +1,9 @@
+<div class="header">
+        <button id="logout" class="headComp">
+          LOGOUT
+        </button>
+       <div id="total" class="headComp"> Total: {{$ctrl.gSvc.total | currency}}</div>
+        <button id="reset" class="headComp" ng-click="$ctrl.reset()" ng-disabled="$ctrl.gSvc.btnDisabled">
+            RESET
+        </button>
+      </div>

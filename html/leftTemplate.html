@@ -1,0 +1,8 @@
+<div class="left">
+  <div class="lable">
+      Cost: {{$ctrl.gSvc.leftCost | currency}}
+  </div>
+  <div id="btnLft" class="button" ng-style="{'background-color': $ctrl.gSvc.leftBtnColor}" ng-click="$ctrl.multiply()">
+       *{{$ctrl.gSvc.multiplier | number: 2}}
+  </div>
+</div>
