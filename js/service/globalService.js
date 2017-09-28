@@ -1,4 +1,4 @@
-angular.module('myApp').service('globalService',[function(){
+angular.module('myApp').service('globalService', ['$cookies',function($cookies){
     
     this.total;
     this.addValue;
@@ -30,36 +30,23 @@ angular.module('myApp').service('globalService',[function(){
     //Cookies
 
     this.getCookie = (cname) => {
-            let name = cname + "=";
-            let decodedCookie = decodeURIComponent(document.cookie);
-            let ca = decodedCookie.split(';');
-            for(let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return "";
-        }
-        
-        this.checkCookie = (name, startVal=0)=> {
-            let temp =this.getCookie(name);
-            let param;
-            if (temp != NaN) {
-                param=Number(temp);
+        return $cookies.get(cname);
+    }
+
+    this.checkCookie = (name, startValue=0) => {
+        let temp = this.getCookie(name);
+        let param;
+             if (temp != NaN) {
+                  param=Number(temp);
             } else {
                 param=startVal;
             }
             return param;
-        }
-        
-        this.setCookie = (paramName,val)=>{
-            document.cookie = paramName +"="+val+";path=/";
-        }
+    }
 
+    this.setCookie = (name,val) => {
+        $cookies.put(name, val);
+    }
         this.setAllCookies = () =>{
             this.setCookie('total', this.total);
             this.setCookie("addValue", this.addValue);
@@ -68,7 +55,6 @@ angular.module('myApp').service('globalService',[function(){
             this.setCookie("rightCost", this.rightCost);
             this.setCookie('multiplier',this.multiplier);
         }
-    
         this.total = this.checkCookie('total');
         this.addValue = this.checkCookie('addValue', 1);
         this.clickersNumber = this.checkCookie('clickersNumber');

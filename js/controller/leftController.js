@@ -2,11 +2,4 @@ angular.module('myApp').controller('leftController',['leftService','globalServic
    
     this.gSvc = gSvc;
     this.multiply = svc.multiply;
-
-    // if(gSvc.total<10){
-    //     this.color = 'GREY';
-    // }else{
-    //     this.color = 'WHITE';
-    // }
-
 }])
